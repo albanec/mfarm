@@ -1,0 +1,69 @@
+# установка софта
+sudo apt-get install openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors 
+# новое ядро
+sudo apt-get install --install-recommends linux-generic-hwe-16.04
+
+# мониторинг температуры/кулеров
+sudo sensors-detect
+sensors
+
+# список видеокарт
+sudo update-pciids
+lspci | grep -E "VGA|3D"
+    # или
+    sudo lshw -c video
+
+# информация по используемому драйверу
+sudo lshw -c video | grep configuration
+modinfo nvidia
+
+## настройка инфраструктуры
+# установка драйверов
+tar xf amdgpu-pro-17.10-414273.tar.xz
+cd amdgpu-pro-17.10-414273
+sudo ./amdgpu-pro-install
+# установка SDK
+tar xf AMD-APP-SDKInstaller-v3.0.130.136-GA-linux64.tar.bz2
+sudo ./AMD-APP-SDK-v3.0.130.136-GA-linux64.sh
+# добавить юзера в группу 'video'
+sudo usermod -a -G video $LOGNAME
+# проверка 
+sudo clinfo
+sudo clinfo | grep compute
+# REBOOT
+# распаковка клеймора 
+tar xf miner.tar.gz
+
+## установка eth-софта
+sudo apt-get install software-properties-common golang
+sudo add-apt-repository -y ppa:ethereum/ethereum
+# sudo add-apt-repository -y ppa:ethereum/ethereum-dev
+sudo apt-get update
+sudo apt-get install ethereum
+# работа с кошельком 
+geth account new
+# запуск 
+./ethminer -t (number of GPUs without brackets) -G -F http://127.0.0.1:8545
+
+### оптимизация 
+# общая информация по карте
+cat /sys/kernel/debug/dri/0/amdgpu_pm_info
+## разгон частот карты
+# вывод частот
+cat /sys/class/drm/card0/device/pp_dpm_sclk 
+cat /sys/class/drm/card0/device/pp_dpm_mclk
+# разгон
+# GPU clock (+1 == +12Mhz)
+echo 3 > /sys/class/drm/card0/device/pp_sclk_od
+# memory clock (+1 == +20Mhz)
+echo 13 > /sys/class/drm/card0/device/pp_mclk_od
+## питание
+cat /sys/class/drm/card0/device/power_dpm_state 
+echo 'manual' > /sys/class/drm/card0/device/power_dpm_force_performance_level
+echo 3 > /sys/class/drm/card0/device/pp_dpm_sclk
+## скорость кулеров
+# авто
+echo 0 > /sys/class/drm/card0/device/hwmon/hwmon0/pwm1_enable
+# ручная 
+echo 1 > /sys/class/drm/card0/device/hwmon/hwmon0/pwm1_enable
+echo 200 > /sys/class/drm/card0/device/hwmon/hwmon0/pwm1
