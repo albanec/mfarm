@@ -1,7 +1,5 @@
 # установка софта
-sudo apt-get install openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors gcc
-# новое ядро
-sudo apt-get install --install-recommends linux-generic-hwe-16.04
+sudo apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors
 
 # мониторинг температуры/кулеров
 sudo sensors-detect
@@ -17,8 +15,9 @@ lspci | grep -E "VGA|3D"
 sudo lshw -c video | grep configuration
 modinfo nvidia
 
-## настройка инфраструктуры
-# установка драйверов
+### настройка инфраструктуры
+
+## установка AMD драйверов
 tar xf amdgpu-pro-17.10-414273.tar.xz
 cd amdgpu-pro-17.10-414273
 sudo ./amdgpu-pro-install
@@ -31,7 +30,16 @@ sudo usermod -a -G video $LOGNAME
 sudo clinfo
 sudo clinfo | grep compute
 # REBOOT
-# распаковка клеймора 
+
+## установка NVIDIA драйверов & CUDA
+sudo apt-get install gcc make
+chmod 777 NVIDIA-Linux-x86_64-375.66.run
+sudo ./NVIDIA-Linux-x86_64-375.66.run
+sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
+
+## распаковка клеймора 
 tar xf miner.tar.gz
 
 ## установка eth-софта
@@ -45,7 +53,7 @@ geth account new
 # запуск 
 ./ethminer -t (number of GPUs without brackets) -G -F http://127.0.0.1:8545
 
-### оптимизация 
+### оптимизация AMD 
 # общая информация по карте
 cat /sys/kernel/debug/dri/0/amdgpu_pm_info
 ## разгон частот карты
