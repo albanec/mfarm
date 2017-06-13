@@ -32,7 +32,7 @@ sudo clinfo | grep compute
 # REBOOT
 
 ## установка NVIDIA драйверов & CUDA
-sudo apt-get install gcc make
+sudo apt-get install gcc make linux-headers-amd64 build-essential
 chmod 777 NVIDIA-Linux-x86_64-375.66.run
 sudo ./NVIDIA-Linux-x86_64-375.66.run
 sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
