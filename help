@@ -1,5 +1,5 @@
 # установка софта
-sudo apt-get install openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors 
+sudo apt-get install openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors gcc
 # новое ядро
 sudo apt-get install --install-recommends linux-generic-hwe-16.04
 
