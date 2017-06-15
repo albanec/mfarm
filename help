@@ -1,5 +1,5 @@
 # установка софта
-sudo apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors
+sudo apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev powertop htop nmon lm-sensors git tmux
 
 # мониторинг температуры/кулеров
 sudo sensors-detect
