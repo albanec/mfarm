@@ -3,7 +3,7 @@
 zwal=''
 worker='rig2'
 email=''
-zpool='zec-eu1.nanopool.org:9999'
+zpool='zec-eu1.nanopool.org'
 port=6666
 zpswd='z'
 
