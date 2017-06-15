@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wal=''
+zwal=''
 worker='rig2'
 email=''
 pool='zec-eu1.nanopool.org:9999'
