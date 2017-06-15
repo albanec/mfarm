@@ -39,7 +39,7 @@ echo 'net.ipv4.conf.all.accept_redirects = 0' >> /etc/sysctl.conf
 echo 'net.ipv4.conf.all.secure_redirects = 0' >> /etc/sysctl.conf
 echo 'net.ipv4.conf.all.send_redirects = 0' >> /etc/sysctl.conf
 # max количество сокетов
-echo 'net.ipv4.tcp_max_orphans = 65536' >> /etc/sysctl.conf
+# echo 'net.ipv4.tcp_max_orphans = 65536' >> /etc/sysctl.conf
 # таймаут висящих сокетов
 echo 'net.ipv4.tcp_fin_timeout = 10' >> /etc/sysctl.conf
 # keepalive тамеры для tcp
