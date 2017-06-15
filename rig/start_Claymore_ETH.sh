@@ -21,5 +21,5 @@ export GPU_USE_SYNC_OBJECTS=1
 #
 ./ethdcrminer64 -epool $epool -ewal $ewal/$worker/$email -epsw $epool_pswd -ethi 16 -etha 2 \
 -dcoin dcr -dcri 30 -dpool $dpool -dwal $dwal -dpsw $dpool_pswd  -asm 1 \
--wd 1 -r 0 -tstop 85 -logfile ~/miner_noappend.log -mport 0
+-wd 1 -r 0 -tstop 80 -logfile ~/miner_noappend.log -mport 0
 
