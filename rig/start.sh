@@ -1,8 +1,9 @@
 #!/bin/bash
+MINER_PATH='/home/rig_admin/claymore_miner_v9.3'
 
 tmux new-session -d -n mining
 
-tmux send-keys -t mining "cd /home/rig_admin/claymore_miner_v9.3
+tmux send-keys -t mining "cd $MINER_PATH
 "
 
 tmux send-keys -t mining "./start.bash
@@ -33,5 +34,5 @@ echo auto > /sys/class/drm/card$n/device/power_dpm_force_performance_level
 done;
 
 sleep 2
-screen -r
+# screen -r
 exit 0
