@@ -8,4 +8,4 @@ port=6666
 zpswd='z'
 
 
-./miner --server $zpool --user $zwal.$worker/$email --pass $pswd --port $port --log --templimit 80 
+./miner --server $zpool --user $zwal.$worker/$email --pass $zpswd --port $port --log --templimit 80 
