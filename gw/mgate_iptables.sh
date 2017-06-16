@@ -24,3 +24,5 @@ iptables -P OUTPUT ACCEPT
 
 iptables -A INPUT -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 #iptables -A INPUT -s 192.168.255.0/24 -i eth1 -p icmp -m icmp --icmp-type 8 -j ACCEPT
+
+dpkg-reconfigure iptables-persistent
