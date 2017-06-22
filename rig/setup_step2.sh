@@ -1,6 +1,7 @@
 #!/bin/bash
 INT_NAME='enp7s0'
 
+echo 'metric 100' >> /etc/network/interfaces
 ### install 
 apt-get update 
 apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev \
