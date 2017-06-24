@@ -4,8 +4,8 @@ install_cuda='TRUE'
 install_driver='FALSE'
 
 
-sudo apt-get install build-essential dkms xserver-xorg xserver-xorg-core \
-xserver-xorg-input-evdev xserver-xorg-video-dummy x11-xserver-utils xdm
+sudo apt-get install -y build-essential dkms xserver-xorg xserver-xorg-core \
+xserver-xorg-input-evdev xserver-xorg-video-dummy x11-xserver-utils xdm libgtk-3-0
 
 /etc/init.d/xdm stop
 
