@@ -3,6 +3,12 @@
 install_cuda='TRUE'
 install_driver='FALSE'
 
+
+sudo apt-get install build-essential dkms xserver-xorg xserver-xorg-core \
+xserver-xorg-input-evdev xserver-xorg-video-dummy x11-xserver-utils xdm
+
+/etc/init.d/xdm stop
+
 if [ $install_cuda == 'TRUE' ]
 then
 mkdir cuda
@@ -29,4 +35,19 @@ chmod +x NVIDIA-Linux-x86_64-375.66.run
 sudo ./NVIDIA-Linux-x86_64-375.66.run
 fi
 
+sudo nvidia-xconfig -s -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \ 
+--registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
+cat > /etc/X11/xdm/Xsetup << EOF
+
+export PATH=/bin:/usr/bin:/sbin
+export HOME=/root
+export DISPLAY=:0
+xset -dpms
+xset s off
+xhost +
+EOF
+
+sed -i '/Driver/a \ \ \ \ Option         "Interactive" "False"' /etc/X11/xorg.conf
+
+reboot 
 exit
