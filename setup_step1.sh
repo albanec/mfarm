@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INT_NAME='enp0s31f6'
-install_kernel='TRUE'
+install_kernel='FALSE'
 #install_cuda='TRUE'
 #install_driver='TRUE'
 

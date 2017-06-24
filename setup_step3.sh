@@ -1,17 +1,21 @@
 #!/bin/bash
 
 ### miner setup
-cd ~
-mkdir miners
-mkdir miners/Claymore_ETH_v9.5
-mkdir miners/Claymore_ZEC_v12.5
-mkdir miners/EWBF_ZEC_0.3.3b
-tar -xvzf Claymore_ETH_v9.5.tar.gz -C miners/Claymore_ETH_v9.5/
-tar -xvzf Claymore_ZEC_v12.5.tar.gz -C miners/Claymore_ZEC_v12.5/
-tar -xvzf EWBF_ZEC_0.3.3b.tar.gz -C miners/EWBF_ZEC_0.3.3b/
-chown rig_admin:rig_admin miners -R
+mkdir miner
+mkdir miner/Claymore_ETH
+cd miner/Claymore_ETH
+wget https://github.com/nanopool/Claymore-Dual-Miner/releases/download/v9.5/Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v9.5.-.LINUX.tar.gz
+tar -xvzf Claymore.s.Dual.Ethereum.Decred_Siacoin_Lbry_Pascal.AMD.NVIDIA.GPU.Miner.v9.5.-.LINUX.tar.gz -C .
+cd ..
 
-cp start_Claymore_ETH.sh miners/Claymore_ETH_v9.5/start.sh
-cp start_Claymore_ZEC.sh miners/Claymore_ZEC_v9.5/start.sh
-cp start_EWBF_ZEC.sh miners/EWBF_ZEC_0.3.3b/start.sh
+mkdir EWBF_ZEC
+cd EWBF_ZEC
+wget https://github.com/nanopool/ewbf-miner/releases/download/v0.3.3b/Zec.miner.0.3.3b.Linux.Bin.tar.gz
+tar -xvzf Zec.miner.0.3.3b.Linux.Bin.tar.gz -C .
+cd ..
+cd ..
+cp start_Claymore_ETH.sh miner/Claymore_ETH/start.sh
+cp start_EWBF_ZEC.sh miner/EWBF_ZEC/start.sh
+
+exit
 
