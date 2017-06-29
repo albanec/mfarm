@@ -49,7 +49,11 @@ xset s off
 xhost +
 EOF
 
+echo 'export DISPLAY=:0' >> ~/.bashrc
+echo 'export DISPLAY=:0' >> /etc/skel/.bashrc
+update-rc.d xdm defaults
+
 sed -i '/Driver/a \ \ \ \ Option         "Interactive" "False"' /etc/X11/xorg.conf
 
-reboot 
+sync && reboot
 exit
