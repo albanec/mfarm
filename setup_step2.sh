@@ -35,7 +35,7 @@ chmod +x NVIDIA-Linux-x86_64-375.66.run
 sudo ./NVIDIA-Linux-x86_64-375.66.run
 fi
 
-sudo nvidia-xconfig -s -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \ 
+sudo nvidia-xconfig -s -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \
 --registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
 cat > /etc/X11/xdm/Xsetup << EOF
 
