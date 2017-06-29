@@ -41,21 +41,21 @@ echo ''
 ### iptables setup
 sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A INPUT -i lo -j ACCEPT
-#ssh
+# ssh
 sudo iptables -A INPUT -i $INT_NAME -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo iptables -A INPUT -i $INT_NAME -p tcp -m tcp --dport 22 -j ACCEPT
 sudo iptables -A INPUT -i tun0 -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 sudo iptables -A INPUT -i tun0 -p tcp -m tcp --dport 22 -j ACCEPT
-#dhcp
+# dhcp
 sudo iptables -A INPUT -i $INT_NAME -p udp -m udp --dport 67 -j ACCEPT
 sudo iptables -A INPUT -i $INT_NAME -p tcp -m tcp --dport 67 -j ACCEPT
+# icmp
+sudo iptables -A INPUT -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+# sudo iptables -A INPUT -s 192.168.255.0/24 -i eth1 -p icmp -m icmp --icmp-type 8 -j ACCEPT
 
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD ACCEPT
 sudo iptables -P OUTPUT ACCEPT
-
-sudo iptables -A INPUT -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
-# sudo iptables -A INPUT -s 192.168.255.0/24 -i eth1 -p icmp -m icmp --icmp-type 8 -j ACCEPT
 
 sudo dpkg-reconfigure iptables-persistent
 
