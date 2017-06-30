@@ -3,13 +3,10 @@
 install_cuda='TRUE'
 install_driver='FALSE'
 
+apt-get install build-essentialxserver-xorg  libgtk-3-dev xdm
+sudo apt-get install -y build-essential xserver-xorg xorg-dev dkms xdm libgtk-3-0
 
-sudo apt-get install -y build-essential dkms xserver-xorg xserver-xorg-core \
-xserver-xorg-input-evdev xserver-xorg-video-dummy x11-xserver-utils xdm libgtk-3-0
-
-sudo systemctl enable xdm.service
-#/etc/init.d/xdm stop
-sudo systemctl stop xdm.service
+/etc/init.d/xdm stop
 
 if [ $install_cuda == 'TRUE' ]
 then
