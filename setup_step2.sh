@@ -38,23 +38,26 @@ sleep 5
 sudo reboot now
 fi
 
-sudo nvidia-xconfig -s -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \
---registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
-cat > /etc/X11/xdm/Xsetup << EOF
+#sudo nvidia-xconfig -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \
+#--registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
+sudo nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration --enable-all-gpus
 
-export PATH=/bin:/usr/bin:/sbin
-export HOME=/root
-export DISPLAY=:0
-xset -dpms
-xset s off
-xhost +
-EOF
 
-echo 'export DISPLAY=:0' >> ~/.bashrc
-echo 'export DISPLAY=:0' >> /etc/skel/.bashrc
-update-rc.d xdm defaults
+# cat > /etc/X11/xdm/Xsetup << EOF
 
-sed -i '/Driver/a \ \ \ \ Option         "Interactive" "False"' /etc/X11/xorg.conf
+#export PATH=/bin:/usr/bin:/sbin
+#export HOME=/root
+#export DISPLAY=:0
+#xset -dpms
+#xset s off
+#xhost +
+#EOF
+
+#echo 'export DISPLAY=:0' >> ~/.bashrc
+#echo 'export DISPLAY=:0' >> /etc/skel/.bashrc
+#update-rc.d xdm defaults
+
+#sed -i '/Driver/a \ \ \ \ Option         "Interactive" "False"' /etc/X11/xorg.conf
 
 sync && reboot
 exit
