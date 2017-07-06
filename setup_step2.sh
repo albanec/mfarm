@@ -7,11 +7,14 @@ apt-get install -y build-essential xserver-xorg build-essential xserver-xorg dkm
 
 if [ $install_driver == 'TRUE' ]
 then
-mkdir driver
-cd driver
-wget http://ru.download.nvidia.com/XFree86/Linux-x86_64/375.66/NVIDIA-Linux-x86_64-375.66.run
-chmod +x NVIDIA-Linux-x86_64-375.66.run
-sudo ./NVIDIA-Linux-x86_64-375.66.run
+#mkdir driver
+#cd driver
+#wget http://ru.download.nvidia.com/XFree86/Linux-x86_64/375.66/NVIDIA-Linux-x86_64-375.66.run
+#chmod +x NVIDIA-Linux-x86_64-375.66.run
+#sudo ./NVIDIA-Linux-x86_64-375.66.run
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt install nvidia-375
 fi
 
 if [ $install_cuda == 'TRUE' ]
@@ -20,11 +23,15 @@ mkdir cuda
 cd cuda
 echo 'Download CUDA'
 echo ''
-wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+#wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 echo 'Install CUDA'
 echo ''
-chmod +x cuda_8.0.61_375.26_linux-run
-sudo ./cuda_8.0.61_375.26_linux-run --silent --toolkit --samples --samplespath=/usr/local/cuda-8.0/samples --override
+#chmod +x cuda_8.0.61_375.26_linux-run
+#sudo ./cuda_8.0.61_375.26_linux-run --silent --toolkit --samples --samplespath=/usr/local/cuda-8.0/samples --override
+sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
 echo 'System reboot'
 echo ''
 sleep 5
