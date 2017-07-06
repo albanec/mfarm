@@ -41,7 +41,7 @@ fi
 #sudo nvidia-xconfig -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \
 #--registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
 sudo nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration --enable-all-gpus \
-    --registry-dwords="PerfLevelSrc=0x2222
+    --registry-dwords="PerfLevelSrc=0x2222"
 
 
 # cat > /etc/X11/xdm/Xsetup << EOF
