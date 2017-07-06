@@ -60,5 +60,5 @@ sudo nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration --enab
 
 #sed -i '/Driver/a \ \ \ \ Option         "Interactive" "False"' /etc/X11/xorg.conf
 
-sync && reboot
+sudo reboot now
 exit
