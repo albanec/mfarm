@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export DISPLAY=:0
 CLOCK=200 # 160
 MEM=1500 # 2000
 
@@ -13,11 +13,11 @@ for i in {0..5}
         nvidia-smi -i $i -pm 0
         nvidia-smi -i $i -pl 170
         # nvidia-smi -i $i -ac 4004,1911
-        nvidia-settings -a [gpu:$i]/GPUPowerMizerMode=1
-        nvidia-settings -a [gpu:$i]/GPUFanControlState=1
-        nvidia-settings -a [fan:$i]/GPUTargetFanSpeed=80
-        nvidia-settings -a [gpu:$i]/GPUGraphicsClockOffset[3]=$CLOCK
-        nvidia-settings -a [gpu:$i]/GPUMemoryTransferRateOffset[3]=$MEM
+        nvidia-settings -a -c :0 [gpu:$i]/GPUPowerMizerMode=1
+        nvidia-settings -a -c :0 [gpu:$i]/GPUFanControlState=1
+        nvidia-settings -a -c :0 [fan:$i]/GPUTargetFanSpeed=80
+        nvidia-settings -a -c :0 [gpu:$i]/GPUGraphicsClockOffset[3]=$CLOCK
+        nvidia-settings -a -c :0 [gpu:$i]/GPUMemoryTransferRateOffset[3]=$MEM
     done
 
 exit
