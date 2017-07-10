@@ -3,7 +3,7 @@
 install_cuda='TRUE'
 install_driver='FALSE'
 
-apt-get install -y build-essential xserver-xorg build-essential xserver-xorg dkms libgtk-3-0 read-edid edid-decode
+sudo apt-get install -y build-essential xserver-xorg build-essential xserver-xorg dkms libgtk-3-0 read-edid edid-decode
 
 if [ $install_driver == 'TRUE' ]
 then
