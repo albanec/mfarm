@@ -3,7 +3,7 @@
 install_cuda='TRUE'
 install_driver='FALSE'
 
-apt-get install -y build-essential xserver-xorg build-essential xserver-xorg dkms libgtk-3-0
+apt-get install -y build-essential xserver-xorg build-essential xserver-xorg dkms libgtk-3-0 read-edid edid-decode
 
 if [ $install_driver == 'TRUE' ]
 then
@@ -42,7 +42,9 @@ fi
 #--registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
 sudo nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration --enable-all-gpus \
     --registry-dwords="PerfLevelSrc=0x2222" --connected-monitor="DFP-0" --custom-edid="DFP-0:/etc/X11/edid.bin"
-
+sudo get-edid -m 0 > edid.bin
+sudo cp edid.bin /etc/X11/
+sudo rm edid.bin
 
 # cat > /etc/X11/xdm/Xsetup << EOF
 
