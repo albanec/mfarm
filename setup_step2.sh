@@ -41,10 +41,10 @@ fi
 #sudo nvidia-xconfig -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \
 #--registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
 sudo nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration --enable-all-gpus \
-    --registry-dwords="PerfLevelSrc=0x2222" --connected-monitor="DFP-0" --custom-edid="DFP-0:/etc/X11/edid.bin"
-sudo get-edid -m 0 > edid.bin
-sudo cp edid.bin /etc/X11/
-sudo rm edid.bin
+    --registry-dwords="PerfLevelSrc=0x2222" --connected-monitor="DFP-0" # --custom-edid="DFP-0:/etc/X11/edid.bin"
+#sudo get-edid -m 0 > edid.bin
+#sudo cp edid.bin /etc/X11/
+#sudo rm edid.bin
 
 # cat > /etc/X11/xdm/Xsetup << EOF
 
