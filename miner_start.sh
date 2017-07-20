@@ -1,19 +1,19 @@
 #!/bin/bash
-coin=$1
+COIN=$1
 
-case '$coin' in
+case '$COIN' in
   ETH)
-    miner_path='/home/rig_admin/miner/Claymore_ETH'
+    MINER_PATH='/home/rig_admin/miner/Claymore_ETH'
     tmux new-session -d -n mining
-    tmux send-keys -t mining "cd $miner_path
+    tmux send-keys -t mining "cd $MINER_PATH
     "
     tmux send-keys -t mining "./start.sh ETH
     "
   ;;
   ZEC)
-    miner_path='/home/rig_admin/miner/Claymore_ZEC'
+    MINER_PATH='/home/rig_admin/miner/Claymore_ZEC'
     tmux new-session -d -n mining
-    tmux send-keys -t mining "cd $miner_path
+    tmux send-keys -t mining "cd $MINER_PATH
     "
     tmux send-keys -t mining "./start.sh ZEC
     "

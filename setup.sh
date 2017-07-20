@@ -4,16 +4,16 @@
 # запуск от рута !!!
 
 # параметры установки
-int_name='enp0s31f6'
-install_kernel='FALSE'
-install_driver='TRUE'
-install_sdk='TRUE'
-coin='ETH'
+INT_NAME='enp0s31f6'
+INSTALL_KERNEL='FALSE'
+INSTALL_DRIVER='TRUE'
+INSTALL_SDK='TRUE'
+COIN='ETH'
 ########################################################################################################################
 
 if ls | grep kernel
 then
-  install_kernel='FALSE'
+  INSTALL_KERNEL='FALSE'
 fi
 
 if  ls -la | grep -w '.temp' > /dev/null
@@ -32,7 +32,7 @@ case '$step' in
     touch .temp
     echo '@reboot /home/rig_admin/mfarm/setup.sh' > .temp
     crontab .temp
-    if [ $install_kernel == TRUE ]
+    if [ $INSTALL_KERNEL == TRUE ]
     then
       echo 1 > .temp
     else
@@ -62,6 +62,8 @@ case '$step' in
     echo '############################'
     source setup_step3.sh
     crontab -r
+    echo '@reboot /home/rig_admin/mfarm/miner_start.sh' $COIN > .temp
+    crontab .temp
     rm .temp
     echo '############################'
     echo 'Initial setup: OK'
