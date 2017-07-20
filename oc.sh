@@ -10,16 +10,15 @@ MEM=1000 # 2000
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
 for i in {0..7}
-    do
-        sudo nvidia-smi -i $i -pm 0
-        sudo nvidia-smi -i $i -pl 100
-        # nvidia-smi -i $i -ac 4004,1911
-        nvidia-settings -c :0 -a [gpu:$i]/GPUPowerMizerMode=1
-        nvidia-settings -c :0 -a [gpu:$i]/GPUFanControlState=0
-        #nvidia-settings -c :0 -a [fan:$i]/GPUTargetFanSpeed=80
-        nvidia-settings -c :0 -a [gpu:$i]/GPUGraphicsClockOffset[3]=$CLOCK
-        nvidia-settings -c :0 -a [gpu:$i]/GPUMemoryTransferRateOffset[3]=$MEM
-    done
-
+do
+  gpu_temp=$(cat /sys/class/drm/card$i/device/hwmon/hwmon$i/temp1_input)
+  echo 1 > /sys/class/drm/card$i/device/hwmon/hwmon$i/pwm1_enable
+  if gpu_temp > 60000
+    echo 210 > /sys/class/drm/card$i/device/hwmon/hwmon$i/pwm1
+  else 
+    echo 0 > /sys/class/drm/card$i/device/hwmon/hwmon$i/pwm1_enable
+  fi
+done
+#
 exit
 
