@@ -21,8 +21,9 @@ case '$COIN' in
 esac
 
 sleep 10
-# oc 
-sh ./oc.sh
+
+# fan 
+sh ./fan.sh
 sleep 2
 
 exit 0

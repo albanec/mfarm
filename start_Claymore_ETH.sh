@@ -21,7 +21,7 @@ case '$1' in
     ./ethdcrminer64 -epool $epool -ewal $ewal/$worker/$email -epsw $epool_pswd -mode 1 -ftime 10     
   ;;
 esac
-#
+
 #
 #./ethdcrminer64 -epool $epool -ewal $ewal/$worker/$email -epsw $epool_pswd -ethi 16 -etha 2 \
 #-dcoin dcr -dcri 30 -dpool $dpool -dwal $dwal -dpsw $dpool_pswd  -asm 1 \
