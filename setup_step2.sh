@@ -2,7 +2,7 @@
 ########################################################################################################################
 # Скрипт для установки зелёных драйверов и CUDA
 ########################################################################################################################
-
+#STEP='driver'
 apt-get install -y build-essential xserver-xorg build-essential xserver-xorg dkms libgtk-3-0 read-edid edid-decode
 
 if [ $STEP == 'driver' ]
@@ -44,6 +44,9 @@ then
   chown rig_admin:rig_admin cuda -R 
 fi
 
+sudo get-edid -m 0 > edid.bin
+sudo cp edid.bin /etc/X11/
+sudo rm edid.bin
 # nvidia-xconfig -a --force-generate --allow-empty-initial-configuration --cool-bits=32 \
 # --registry-dwords="PerfLevelSrc=0x2222" --no-sli --connected-monitor="DFP-0"
 nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration --enable-all-gpus \
