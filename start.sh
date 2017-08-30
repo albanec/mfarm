@@ -1,16 +1,14 @@
 #!/bin/bash
-MINER_PATH='/home/rig_admin/claymore_miner_v9.3'
-CARDS_COLOR='red'
-tmux new-session -d -n mining
-tmux send-keys -t mining "cd $MINER_PATH
-"
-tmux send-keys -t mining "./start.sh
-"
-sleep 10
+
+sleep 30
 
 # oc 
-sh ./oc_$CARDS_COLOR.sh
+./oc.sh $1
+# start miner
+tmux new-session -d -n mining
+tmux send-keys -t mining "./start.sh $1
+"
 
-sleep 2
-# screen -r
+sleep 10
+
 exit 0
