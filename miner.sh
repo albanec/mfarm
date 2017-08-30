@@ -16,13 +16,14 @@ case '$1' in
     epool_pswd='x'
     cd miner/Claymore_ETH/
     ./ethdcrminer64 -epool $epool -ewal $ewal.$worker -epsw $epool_pswd -logfile noappend.log -mode 1 -ftime 10
-    ;;
+      ;;
   ZEC)
     zwal=''
     worker='rig1'
     zpool='zec-eu1.nanopool.org'
     port=6666
     zpswd='z'
+    cd miner/EWBF_ZEC/
     ./miner --server $zpool --user $zwal.$worker --pass $zpswd --port $port --log noappend.log --templimit 80 
     ;;
   ZEN)
@@ -31,6 +32,7 @@ case '$1' in
     zpool='eu.zenmine.pro'
     port=9009
     zpswd='x'
+    cd miner/EWBF_ZEC/
     ./miner --server $zpool --user $zwal.$worker --pass $zpswd --port $port --log noappend.log --templimit 80 
     ;;
   ETH_DCR)
