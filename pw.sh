@@ -2,20 +2,22 @@
 
 NCARD=`nvidia-smi -L | wc -l`
 
-case '$1' in
-  ETC)
+if [ $1 == 'ETH' ]
+  then
     PL=100
-    ;;
-  ETH)
+  fi
+if [ $1 == 'ETC' ]  
+  then
     PL=100
-    ;;
-  ZEC)
+  fi
+if [ $1 == 'ZEC' ]
+  then
     PL=120
-    ;;
-  ZEN)
+  fi
+if [ $1 == 'ZEN' ]
+  then
     PL=120
-    ;;
-esac
+  fi
 
 for i in {0..$((NCARD - 1))}
   do

@@ -3,24 +3,26 @@
 export DISPLAY=:0
 NCARD=`nvidia-smi -L | wc -l`
 
-case '$1' in
-  ETC)
+if [ $1 == 'ETH' ] 
+  then
     CLOCK=120
     MEM=1000
-    ;;
-  ETH)
+  fi
+if [ $1 == 'ETC' ]  
+  then
     CLOCK=120
     MEM=1000
-    ;;
-  ZEC)
+  fi
+if [ $1 == 'ZEC' ]
+  then
     CLOCK=120
     MEM=1000
-    ;;
-  ZEN)
+  fi
+if [ $1 == 'ZEN' ]
+  then
     CLOCK=120
     MEM=1000
-    ;;
-esac
+  fi
 
 #echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 #echo "performance" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
@@ -37,4 +39,3 @@ for i in {0..$((NCARD - 1))}
   done
 
 exit
-
