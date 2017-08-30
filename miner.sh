@@ -1,23 +1,28 @@
 #!/bin/bash
 
-case '$1' in
-  ETH)
+if [ $1 == 'ETH' ]
+  then
+    echo '//// Start Claymore miner for ETH only ////'
     ewal=''
     worker='rig1'
     epool='eth-eu1.nanopool.org:9999'
     epool_pswd='x'
     cd miner/Claymore_ETH/
     ./ethdcrminer64 -epool $epool -ewal $ewal.$worker -epsw $epool_pswd -logfile noappend.log -mode 1 -ftime 10
-    ;;
-  ETC)
+  fi
+if [ $1 == 'ETC' ]
+  then
+    echo '//// Start Claymore miner for ETC only ////'
     ewal=''
     worker='rig1'
     epool='eth-eu1.nanopool.org:19999'
     epool_pswd='x'
     cd miner/Claymore_ETH/
     ./ethdcrminer64 -epool $epool -ewal $ewal.$worker -epsw $epool_pswd -logfile noappend.log -mode 1 -ftime 10
-      ;;
-  ZEC)
+  fi
+if [ $1 == 'ZEC' ]
+  then
+    echo '//// Start EWBF miner for ZEC only ////'
     zwal=''
     worker='rig1'
     zpool='zec-eu1.nanopool.org'
@@ -25,8 +30,10 @@ case '$1' in
     zpswd='z'
     cd miner/EWBF_ZEC/
     ./miner --server $zpool --user $zwal.$worker --pass $zpswd --port $port --log noappend.log --templimit 80 
-    ;;
-  ZEN)
+  fi
+if [ $1 == 'ZEN' ]
+  then
+    echo '//// Start EWBF miner for ZEN only ////'
     zwal=''
     worker='rig1'
     zpool='eu.zenmine.pro'
@@ -34,8 +41,10 @@ case '$1' in
     zpswd='x'
     cd miner/EWBF_ZEC/
     ./miner --server $zpool --user $zwal.$worker --pass $zpswd --port $port --log noappend.log --templimit 80 
-    ;;
-  ETH_DCR)
+  fi
+if [ $1 == 'ETH_DCR' ]  
+  then
+    echo '//// Start Claymore miner for ETH and DCR ////'
     ewal=''
     worker='rig1'
     epool='eth-eu1.nanopool.org:9999'
@@ -48,5 +57,4 @@ case '$1' in
     ./ethdcrminer64 -epool $epool -ewal $ewal.$worker -epsw $epool_pswd \
       -dcoin dcr -dcri 26 -dpool $dpool -dwal $dwal -dpsw $dpool_pswd \
       -logfile noappend.log -mode 1 -ftime 10
-    ;;    
-esac
+  fi    

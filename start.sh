@@ -4,6 +4,7 @@ sleep 30
 tmux new-session -d -n mining 
 tmux send-keys -t mining "./oc.sh $1
 "
+sleep 5
 tmux send-keys -t mining "./miner.sh $1
 "
 sleep 10
