@@ -27,7 +27,7 @@ esac
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
-for i in {0..7}
+for i in {0..$((NCARD - 1))}
   do
     nvidia-settings -c :0 -a [gpu:$i]/GPUPowerMizerMode=1
     nvidia-settings -c :0 -a [gpu:$i]/GPUFanControlState=0
