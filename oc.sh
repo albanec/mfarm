@@ -3,25 +3,25 @@
 export DISPLAY=:0
 NCARD=`nvidia-smi -L | wc -l`
 
-if [ $1 == 'ETH' ] 
+if [ $1 == 'ETH' ]
   then
     CLOCK=120
     MEM=1000
   fi
-if [ $1 == 'ETC' ]  
+if [ $1 == 'ETC' ]
   then
     CLOCK=120
     MEM=1000
   fi
 if [ $1 == 'ZEC' ]
   then
-    CLOCK=120
-    MEM=1000
+    CLOCK=160
+    MEM=600
   fi
 if [ $1 == 'ZEN' ]
   then
     CLOCK=120
-    MEM=1000
+    MEM=600
   fi
 
 #echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -29,7 +29,7 @@ if [ $1 == 'ZEN' ]
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
-for i in {0..$((NCARD - 1))}
+for i in `seq 0 $(($NCARD - 1))`
   do
     nvidia-settings -c :0 -a [gpu:$i]/GPUPowerMizerMode=1
     nvidia-settings -c :0 -a [gpu:$i]/GPUFanControlState=0
