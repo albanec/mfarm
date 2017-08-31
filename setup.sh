@@ -9,9 +9,9 @@ INSTALL_KERNEL='FALSE'
 INSTALL_DRIVER='TRUE'
 INSTALL_CUDA='TRUE'
 COIN='ETH'
+USER='rig_admin'
 ########################################################################################################################
 
-USER=whoami
 if ls | grep kernel
   then
     INSTALL_KERNEL='FALSE'

@@ -20,20 +20,20 @@ if [ $1 == 'ZEC' ]
   fi
 if [ $1 == 'ZEN' ]
   then
-    CLOCK=120
+    CLOCK=160
     MEM=600
   fi
 
-#echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-#echo "performance" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo "performance" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 #echo 2800000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
 for i in `seq 0 $(($NCARD - 1))`
   do
     nvidia-settings -c :0 -a [gpu:$i]/GPUPowerMizerMode=1
-    nvidia-settings -c :0 -a [gpu:$i]/GPUFanControlState=0
-    #nvidia-settings -c :0 -a [fan:$i]/GPUTargetFanSpeed=80
+    nvidia-settings -c :0 -a [gpu:$i]/GPUFanControlState=1
+    nvidia-settings -c :0 -a [fan:$i]/GPUTargetFanSpeed=80
     nvidia-settings -c :0 -a [gpu:$i]/GPUGraphicsClockOffset[3]=$CLOCK
     nvidia-settings -c :0 -a [gpu:$i]/GPUMemoryTransferRateOffset[3]=$MEM
   done

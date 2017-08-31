@@ -12,7 +12,7 @@ if [ $1 == 'ETC' ]
   fi
 if [ $1 == 'ZEC' ]
   then
-    PL=120
+    PL=160
   fi
 if [ $1 == 'ZEN' ]
   then
