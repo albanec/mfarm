@@ -103,6 +103,7 @@ if [ $STEP == 3 ]
     crontab -u $USER .temp
     rm .temp
     chown $USER:$USER * -R
+    chmod +x *.sh
     echo '############################'
     echo 'Initial setup: OK'
     echo '############################'

@@ -2,6 +2,8 @@
 
 sleep 30
 tmux new-session -d -n mining 
+tmux send-keys -t mining "cd ~/mfarm 
+"
 tmux send-keys -t mining "./oc.sh $1
 "
 sleep 5
