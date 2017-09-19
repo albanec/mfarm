@@ -17,7 +17,7 @@ then
   # ./NVIDIA-Linux-x86_64-375.66.run
   add-apt-repository ppa:graphics-drivers/ppa
   apt-get update
-  apt-get install nvidia-375 -y
+  apt-get install nvidia-384 -y
   echo 'cuda' > .temp
   exit
 fi
