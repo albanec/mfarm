@@ -7,7 +7,7 @@
 INT_NAME='enp0s31f6'
 INSTALL_KERNEL='FALSE'
 INSTALL_DRIVER='TRUE'
-INSTALL_CUDA='TRUE'
+INSTALL_CUDA='FALSE'
 COIN='ETH'
 USER='rig_admin'
 ########################################################################################################################
