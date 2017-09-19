@@ -28,6 +28,8 @@ echo 'Update system'
 echo ''
 ### install
 apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
 apt-get install ubuntu-desktop --no-install-recommends
 apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev \
     powertop htop nmon lm-sensors git tmux \
