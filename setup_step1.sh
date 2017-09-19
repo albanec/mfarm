@@ -32,7 +32,7 @@ apt-get upgrade -y
 apt-get dist-upgrade -y
 apt-get install ubuntu-desktop --no-install-recommends
 apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev \
-    powertop htop nmon lm-sensors git tmux \
+    powertop htop nmon lm-sensors git tmux read-edid \
     gcc make build-essential
 
 echo 'Setup iptables'
