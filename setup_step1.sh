@@ -164,4 +164,4 @@ echo 'fs.inotify.max_user_watches = 16777216' >> /etc/sysctl.conf
 echo 'fs.inotify.max_queued_events = 65536' >> /etc/sysctl.conf
 sysctl -p
 
-exit
+#exit
