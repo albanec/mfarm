@@ -15,5 +15,5 @@ tar -xvzf Zec.miner.0.3.4b.Linux.Bin.tar.gz -C .
 cd ..
 cd ..
 
-exit
+# exit
 
