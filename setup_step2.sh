@@ -19,7 +19,7 @@ then
   apt-get update
   apt-get install nvidia-384 -y
   echo 'cuda' > .temp
-  exit
+  # exit
 fi
 
 if [ $STEP == 'CUDA' ]
@@ -44,4 +44,4 @@ then
   chown rig_admin:rig_admin cuda -R 
 fi
 
-exit
+# exit
