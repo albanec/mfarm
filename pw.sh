@@ -19,6 +19,7 @@ if [ $1 == 'ZEN' ]
     PL=160
   fi
 
+sleep 15
 for i in `seq 0 $(($NCARD - 1))`
   do
     sudo nvidia-smi -i $i -pm 0
