@@ -2,8 +2,9 @@
 ########################################################################################################################
 # Скрипт для обновления системы и настройки сети и ядра
 ########################################################################################################################
-# INT_NAME='enp0s31f6'
-# INSTALL_KERNEL='FALSE'
+
+INT_NAME='enp0s31f6'
+INSTALL_KERNEL='FALSE'
 
 if [ $INSTALL_KERNEL == TRUE ]
 then
@@ -21,6 +22,7 @@ then
   dpkg -i *.deb
   update-grub
   echo ''
+  reboot now
   exit
 fi
 
@@ -29,11 +31,10 @@ echo ''
 ### install
 apt-get update
 apt-get upgrade -y
-apt-get dist-upgrade -y
 apt-get install ubuntu-desktop --no-install-recommends
 apt-get install -y openvpn iptables-persistent fail2ban clinfo libcurl3 libcurl4-openssl-dev \
-    powertop htop nmon lm-sensors git tmux read-edid \
-    gcc make build-essential
+  powertop htop nmon lm-sensors git tmux read-edid \
+  gcc make build-essential
 
 echo 'Setup iptables'
 echo ''
@@ -163,5 +164,5 @@ echo 'kernel.core_uses_pid = 1' >> /etc/sysctl.conf
 echo 'fs.inotify.max_user_watches = 16777216' >> /etc/sysctl.conf
 echo 'fs.inotify.max_queued_events = 65536' >> /etc/sysctl.conf
 sysctl -p
-
+reboot now
 #exit

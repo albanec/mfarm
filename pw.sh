@@ -4,21 +4,48 @@ NCARD=`nvidia-smi -L | wc -l`
 
 if [ $1 == 'ETH' ]
   then
-    PL=100
+    if [ $2 == '1060' ]
+      then
+        PL=75
+      fi
+    if [ $2 == '1070' ]
+      then 
+        PL=100
+      fi
   fi
 if [ $1 == 'ETC' ]
   then
-    PL=100
+    if [ $2 == '1060' ]
+      then
+        PL=75
+      fi
+    if [ $2 == '1070' ]
+      then 
+        PL=100
+      fi
   fi
 if [ $1 == 'ZEC' ]
   then
-    PL=160
+    if [ $2 == '1060' ]
+      then
+        PL=100
+      fi
+    if [ $2 == '1070' ]
+      then 
+        PL=160
+      fi
   fi
 if [ $1 == 'ZEN' ]
   then
-    PL=160
+    if [ $2 == '1060' ]
+      then 
+        PL=100
+      fi
+    if [ $2 == '1070' ]
+      then 
+        PL=160
+      fi
   fi
-
 sleep 15
 for i in `seq 0 $(($NCARD - 1))`
   do
